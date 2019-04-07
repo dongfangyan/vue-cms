@@ -1,11 +1,11 @@
 <template>
-    <div>
+    <div class="app-container">
         <!--顶部Header区域-->
         <mt-header fixed title="Vue项目"></mt-header>
         <!--中间路由route-view区域-->
-
+           <transition >
              <router-view></router-view>
-
+           </transition>
         <!--底部区域Tabbar-->
         <nav class="mui-bar mui-bar-tab">
 			<router-link class="mui-tab-item" to="home">
@@ -34,5 +34,23 @@
 
 </script>
 <style  lang="scss" scoped>
+.v-enter{
+      opacity: 0;
+      transform: translateX(100%);
 
+  }
+   .v-leave-to{
+      opacity: 0;
+      transform: translateX(-100%);
+	 
+  }
+  .v-enter-active,
+  .v-leave-active{
+      transition: all 0.6s ease;
+
+  }
+  .app-container{
+	  overflow-x: hidden;
+	  margin-top: 40px;
+  }
 </style>

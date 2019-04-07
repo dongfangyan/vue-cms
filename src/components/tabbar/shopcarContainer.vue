@@ -8,7 +8,5 @@
 </script>
 
 <style lang="scss" scoped>
-    div{
-     margin-top:40px ;
- }
+ 
 </style>
