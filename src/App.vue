@@ -42,6 +42,7 @@
    .v-leave-to{
       opacity: 0;
       transform: translateX(-100%);
+       position: absolute;
 	 
   }
   .v-enter-active,
@@ -52,5 +53,8 @@
   .app-container{
 	  overflow-x: hidden;
 	  margin-top: 40px;
+     margin-bottom: 55px;
+    
   }
+  
 </style>
