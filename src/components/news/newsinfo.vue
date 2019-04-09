@@ -7,7 +7,7 @@
         </p>
         <hr>
        <div class="content">
-           
+           <video width="100%" controls src="https://media.w3.org/2010/05/sintel/trailer.mp4"></video>
              <p>{{newsinfo.author}}</p>
              <p><img src="../../img/1.jpg" alt=""></p>
             
@@ -39,7 +39,7 @@ import comment from '../subcomponents/comment.vue'
         .then(result => {
           console.log(result.body.data.videoInfo);
 
-          if (result.status ===200) {
+          if (result.body.code===0) {
             this.newsinfo = result.body.data.videoInfo;
           } else {
              Toast("获取数据失败");
