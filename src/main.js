@@ -20,7 +20,7 @@ Vue.component(Header.name, Header);
 Vue.component(Button.name, Button);
 import router from './router.js'
 Vue.http.options.emulateJSON = true;
-
+import './styles/index.less'
 var vm = new Vue({
   el: '#app',
   render: c => c(app),
