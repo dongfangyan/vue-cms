@@ -13,6 +13,13 @@ import '../lib/mui-master/dist/css/mui.min.css'
 import '../lib/mui-master/examples/hello-mui/css/icons-extra.css'
 import { Header, Swipe, SwipeItem,Button} from 'mint-ui';
 
+// 导入格式化时间的插件
+import moment from 'moment'
+// 定义全局的过滤器
+Vue.filter('dateFormat', function (dataStr, pattern = "YYYY-MM-DD HH:mm:ss") {
+  return moment(dataStr).format(pattern)
+})
+
 Vue.component(Swipe.name, Swipe);
 Vue.component(SwipeItem.name, SwipeItem);
 

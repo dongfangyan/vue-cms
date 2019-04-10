@@ -11,7 +11,7 @@
         <div class="mui-media-body">
           <div class="title">
             <span>{{item.username}}</span>
-            <span>发表时间：{{item.commentDate}}</span>
+            <span>发表时间：{{item.commentDate | dateFormat}}</span>
           </div>
 
           <p class="mui-ellipsis">{{item.commentInfo}}</p>

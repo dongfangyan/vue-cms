@@ -95,6 +95,7 @@ import comment from '../subcomponents/comment.vue'
            border-radius: 5px;
            }
            p.para{
+             padding: 0 5px;
 	         font-size: 0.9em;
 	         color: #5A5E68;
 	         line-height: 1.8em;
