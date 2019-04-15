@@ -58,9 +58,7 @@ export default {
         );
     },
     getmore(){
-         this.$http
-        .post(
-          "https://easy-mock.com/mock/5cacbc53d55c5f6c3b16add9/vue-cm/fenye?page=" +
+         this.$http.post("https://easy-mock.com/mock/5cacbc53d55c5f6c3b16add9/vue-cm/fenye?page=" +
             this.page
         )
         .then(
