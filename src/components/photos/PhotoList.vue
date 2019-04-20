@@ -1,13 +1,9 @@
 <template>
   <div>
     <div id="slider" class="mui-slider">
-      <div
-        id="sliderSegmentedControl"
-        class="mui-scroll-wrapper mui-slider-indicator mui-segmented-control mui-segmented-control-inverted"
-      >
+      <div id="sliderSegmentedControl" class="mui-scroll-wrapper mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
         <div class="mui-scroll">
-          <a
-            v-for="item in  cates"
+        <a v-for="item in  cates"
             :key="item.id"
             :class="['mui-control-item ',item.id==0?'mui-active':'']"
             href="#item1mobile"

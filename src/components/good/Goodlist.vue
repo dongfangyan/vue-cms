@@ -1,36 +1,56 @@
 <template>
   <div class="goods-list">
-    <div class="goods-item">
- <img src="../../img/1.jpg" alt="">
-      <h1 class="title">545454</h1>
+    <router-link v-for="item in goodslist" :key="item.id" class="goods-item" 
+    :to="'/home/goodsinfo/'+item.id">
+ <img :src="item.img_url" alt="">
+      <h1 class="title">{{item.title}}</h1>
       <div class="info">
         <p class="price">
-          <span class="now">￥5454</span>
-          <span class="old">￥545454</span>
+          <span class="now">￥{{item.sell_price}}</span>
+          <span class="old">￥{{item.market_price}}</span>
         </p>
         <p class="sell">
           <span>热卖中</span>
-          <span>剩4343件</span>
+          <span>剩{{item.stock_quantity}}件</span>
         </p>
       </div>
-    </div>
-     <div class="goods-item">
- <img src="../../img/1.jpg" alt="">
-      <h1 class="title">545454</h1>
-      <div class="info">
-        <p class="price">
-          <span class="now">￥5454</span>
-          <span class="old">￥545454</span>
-        </p>
-        <p class="sell">
-          <span>热卖中</span>
-          <span>剩4343件</span>
-        </p>
-      </div>
-    </div>
+    </router-link>
+    <mt-button type="danger" size="large" @click="getMore()">加载更多</mt-button>
   </div>
 </template>
 <script>
+import mui from "../../../lib/mui-master/dist/js/mui.js";
+ export default{
+   data(){
+     return{
+       pageindex:1,
+       goodslist:[]
+     }
+   },
+   created(){
+     this.getGoodList();
+   },
+   mounted() {
+    mui(".mui-scroll-wrapper").scroll({
+      deceleration: 0.0005 //flick 减速系数，系数越大，滚动速度越慢，滚动距离越小，默认值0.0006
+    });
+  },
+ methods:{
+   getMore(){
+     this.pageindex++;
+     console.log(this.pageindex);
+     this.getGoodList(this.pageindex);
+   },
+   getGoodList(){
+     this.$http.get('https://www.easy-mock.com/mock/5cacbc53d55c5f6c3b16add9/vue-cm/api/getgoods?pageindex='+this.pageindex).then(result=>{
+       if(result.body.code===0){
+         console.log(result.body);
+          this.goodslist=this.goodslist.concat(result.body.data);
+       }
+     })
+   }
+ }
+ }
 </script>
 <style lang="scss" scoped>
 .goods-list {
