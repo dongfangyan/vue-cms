@@ -1,11 +1,7 @@
 <template>
   <div>
     <!---轮播图区域--->
-    <mt-swipe :auto="4000">
-      <mt-swipe-item v-for="item in  lunboList" :key="item.id">
-        <img :src="item.imgSrc">
-      </mt-swipe-item>
-    </mt-swipe>
+        <swiper :lunbotuList="lunbotuList" :isfull="true"></swiper>
     <!--九宫图-->
  
     <ul class="mui-table-view mui-grid-view mui-grid-9">
@@ -36,10 +32,11 @@
 </template>
 <script>
 import { Toast } from "mint-ui";
+import swiper from '../subcomponents/swiper.vue'
 export default {
   data() {
     return {
-      lunboList: []
+      lunbotuList: [] 
     };
   },
   created() {
@@ -55,7 +52,7 @@ export default {
           console.log(result.body.data);
 
           if (result.body.code === 0) {
-            this.lunboList = result.body.data.swiperList;
+            this.lunbotuList  = result.body.data.swiperList;
           } else {
             Toast("获取数据失败");
           }
@@ -63,25 +60,16 @@ export default {
                    Toast("获取数据失败");
                 });
     }
+  },
+  components: {
+    swiper
   }
 };
 </script>
 
 <style lang="scss" scoped>
 
-.mint-swipe {
-  height: 200px;
-  img {
-    width: 100%;
-    height: 100%;
-  }
-}
-.mint-swipe-item:nth-child(1) {
-  background-color: #fff;
-}
-.mint-swipe-item:nth-child(2) {
-  background-color: yellowgreen;
-}
+
 .mui-grid-view.mui-grid-9{
     background-color: #fff;
     border: 0;

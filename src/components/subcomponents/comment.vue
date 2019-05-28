@@ -28,7 +28,9 @@ export default {
     return {
       commentsList: [],
       page:0,
-      msg:[]
+      msg:[],
+      id: this.$route.params.id
+
 
     };
   },
