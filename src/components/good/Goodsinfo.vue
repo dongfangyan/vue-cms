@@ -4,39 +4,60 @@
       <div class="mui-card-content">
         <div class="mui-card-content-inner clear-padding">
           <!---轮播图区域--->
-          <mt-swipe :auto="4000">
-            <mt-swipe-item v-for="item in  lunboList" :key="item.id">
-              <img :src="item.imgSrc">
-            </mt-swipe-item>
-          </mt-swipe>
+      
+      <swiper :lunboList="lunbotuList"></swiper>
         </div>
       </div>
     </div>
     <div class="mui-card">
-      <div class="mui-card-header">页眉</div>
+      <div class="mui-card-header">{{getGoodsInfo.item}}</div>
       <div class="mui-card-content">
-        <div class="mui-card-content-inner">包含页眉页脚的卡片，页眉常用来显示面板标题，页脚用来显示额外信息或支持的操作（比如点赞、评论等）</div>
+        <div class="mui-card-content-inner">
+          <p class="price">
+            市场价：<del>￥2399</del>&nbsp;&nbsp;销售价：<span class="now_price">￥2199</span>
+          </p>
+          <p>购买数量：
+         <numbox></numbox>
+				
+          </p>
+
+        </div>
+           <mt-button type="primary" size="small">立即购买</mt-button>
+           <mt-button type="danger" size="small">加入购物车</mt-button>
       </div>
     </div>
     <div class="mui-card">
-      <div class="mui-card-header">页眉</div>
+      <div class="mui-card-header">商品参数</div>
       <div class="mui-card-content">
-        <div class="mui-card-content-inner">包含页眉页脚的卡片，页眉常用来显示面板标题，页脚用来显示额外信息或支持的操作（比如点赞、评论等）</div>
+        <div class="mui-card-content-inner">
+          <p>商品货号：</p>
+          <p>库存情况：</p>
+          <p>上架时间：</p>
+          </div>
       </div>
-      <div class="mui-card-footer">页脚</div>
+      <div class="mui-card-footer">
+        <mt-button type="primary" size="large" plain>图文介绍</mt-button>
+
+         <mt-button type="danger" size="large"  plain>商品评论</mt-button>
+      </div>
     </div>
   </div>
 </template>
 <script>
 import { Toast } from "mint-ui";
+import swiper from '../subcomponents/swiper.vue';
+import numbox from '../subcomponents/goodsinfo_box.vue'
 export default {
   data() {
     return {
-      lunboList: []
+      id:this.$route.params.id,
+      lunbotuList: [],
+      getGoodsInfo: {}
     };
   },
   created() {
     this.getLunbotu();
+    this.getGoodsInfodata();
   },
   methods: {
     getLunbotu() {
@@ -48,7 +69,23 @@ export default {
           console.log(result.body.data);
 
           if (result.body.code === 0) {
-            this.lunboList = result.body.data.swiperList;
+            this.lunbotuList= result.body.data.swiperList;
+          } else {
+            Toast("获取数据失败");
+          }
+        },function(){
+                   Toast("获取数据失败");
+                });
+    },
+     getGoodsInfodata() { 
+      this.$http
+        .get(
+          "https://easy-mock.com/mock/5cacbc53d55c5f6c3b16add9/vue-cm/getinfo?id="+this.id)
+        .then(result => {
+          console.log(result.body.data);
+
+          if (result.body.code === 0) {
+            this.getGoodsInfo= result.body.data;
           } else {
             Toast("获取数据失败");
           }
@@ -56,6 +93,10 @@ export default {
                    Toast("获取数据失败");
                 });
     }
+  } ,
+  components:{
+    swiper,
+    numbox
   }
 };
 </script>
@@ -73,6 +114,16 @@ export default {
     height: 100%;
   }
 }
+.now_price{
+  color: red;
+}
+
+}
+.mui-card-footer{
+  display:block;
+  button{
+    margin:10px 0px;
+  }
 }
 </style>
 
