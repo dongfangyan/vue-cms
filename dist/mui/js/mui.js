@@ -8116,7 +8116,7 @@ Function.prototype.bind = Function.prototype.bind || function(to) {
         initEvent: function() {
             var self = this;
             self.plus.addEventListener(tapEventName, function(event) {
-                var val = parseInt(self.input.value) + self.options.step;
+				var val = parseInt(self.input.value) + self.options.step;
                 self.input.value = val.toString();
                 $.trigger(self.input, changeEventName, null);
             });
@@ -8132,7 +8132,7 @@ Function.prototype.bind = Function.prototype.bind || function(to) {
                 $.trigger(self.holder, changeEventName, {
                     value: val
                 });
-            });
+            }); 
         },
         /**
          * 获取当前值

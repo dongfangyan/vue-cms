@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "webpack-dev-server --open --port 5000 --hot "
-
+   
+    "dev": "webpack-dev-server --open --port 4000 --hot  --host  10.73.178.147"
   },
   "keywords": [],
   "author": "",

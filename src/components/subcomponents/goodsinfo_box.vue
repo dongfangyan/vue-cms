@@ -6,7 +6,7 @@
           </div>
 </template>
 <script>
-import mui from "../../../dist/mui/js/mui.min.js"
+ import mui from "../../../dist/mui/js/mui.min.js"
 export default {
     mounted(){
 		mui('.mui-numbox').numbox()
@@ -27,7 +27,8 @@ export default {
         .numbox()
         .setOption("max", newVal);
     }
-  }
+	}
+
 };
-}
+
 </script>

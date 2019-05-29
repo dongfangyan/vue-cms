@@ -1,7 +1,7 @@
 <template>
   <div>
     <!---轮播图区域--->
-      <swiper :lunboList="lunbotuList"></swiper>
+        <swiper :lunbotuList="lunbotuList" :isfull="true"></swiper>
     <!--九宫图-->
  
     <ul class="mui-table-view mui-grid-view mui-grid-9">
@@ -36,7 +36,7 @@ import swiper from '../subcomponents/swiper.vue'
 export default {
   data() {
     return {
-      lunbotuList: []
+      lunbotuList: [] 
     };
   },
   created() {
@@ -52,7 +52,7 @@ export default {
           console.log(result.body.data);
 
           if (result.body.code === 0) {
-            this.lunbotuList = result.body.data.swiperList;
+            this.lunbotuList  = result.body.data.swiperList;
           } else {
             Toast("获取数据失败");
           }
@@ -61,7 +61,7 @@ export default {
                 });
     }
   },
-  components:{
+  components: {
     swiper
   }
 };
@@ -70,13 +70,6 @@ export default {
 <style lang="scss" scoped>
 
 
-
-.mint-swipe-item:nth-child(1) {
-  background-color: #fff;
-}
-.mint-swipe-item:nth-child(2) {
-  background-color: yellowgreen;
-}
 .mui-grid-view.mui-grid-9{
     background-color: #fff;
     border: 0;

@@ -1,16 +1,16 @@
- <template>
- <div>
- <mt-swipe :auto="4000">
-      <mt-swipe-item v-for="item in  lunboList" :key="item.id">
+<template>
+  <div>
+    <mt-swipe :auto="4000">
+      <mt-swipe-item v-for="item in  lunbotuList" :key="item.id">
         <img :src="item.imgSrc">
       </mt-swipe-item>
     </mt-swipe>
-    </div>
-</template>    
+  </div>
+</template>
 <script>
 export default {
-    props:["lunboList"]
-}
+    props:['lunbotuList', "isfull"]
+};
 </script>
 <style lang="scss" scoped>
 .mint-swipe {
@@ -20,5 +20,14 @@ export default {
     height: 100%;
   }
 }
+.mint-swipe-item:nth-child(1) {
+  background-color: #fff;
+}
+.mint-swipe-item:nth-child(2) {
+  background-color: yellowgreen;
+}
+
+
 </style>
+
 

@@ -31,7 +31,7 @@
   </div>
 </template>
 <script>
-import mui from "../../../lib/mui-master/dist/js/mui.js";
+import mui from "../../../lib/mui-master/dist/js/mui.min.js";
 import { Toast } from "mint-ui";
 
 export default {
