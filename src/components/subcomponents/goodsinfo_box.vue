@@ -6,10 +6,10 @@
           </div>
 </template>
 <script>
-import mui from "../../../dist/mui/js/mui.min.js"
+// import mui from "../../../dist/mui/js/mui.min.js"
 export default {
     mounted(){
-		mui('mui-numbox').numbox()
+		// mui('mui-numbox').numbox()
 	}
 }
 </script>

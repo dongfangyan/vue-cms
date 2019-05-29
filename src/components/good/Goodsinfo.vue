@@ -5,7 +5,7 @@
        @enter="enter"
        @after-enter="afterEnter"
        >
-      <div class="ball" v-show="ballFlag"></div>
+      <div class="ball" v-show="ballFlag" ref="ball" ></div>
     </transition>
     <div class="mui-card">
       <div class="mui-card-content">
@@ -22,7 +22,7 @@
           <p class="price">市场价：<del>￥{{getinfodata.market_price}}</del>&nbsp;&nbsp;
              销售价： <span class="now_price">￥{{getinfodata.sell_price}}</span>
           </p>
-          <p>购买数量：<numbox></numbox></p>
+          <p>购买数量：<numbox  @getcount="getSelectedCount" :max="getinfodata.stock_quantity"></numbox></p>
           <p>
             <mt-button type="primary" size="small">立即购买</mt-button>
             <mt-button type="danger" size="small" @click="addToShopCar()">加入购物车</mt-button>
@@ -56,7 +56,8 @@ export default {
       id: this.$route.params.id, // 将路由参数对象中的 id 挂载到 data , 方便后期调用
      lunbotuList: [],
     getinfodata: {},
-    ballFlag:false
+    ballFlag:false,
+    getSelectednum:1
     };
   },
   created() {
@@ -111,7 +112,11 @@ export default {
     },
     enter(el,done){
       el.offsetWidth;
-      el.style.transform="translate(88px,400px)"
+      const ballPosition=this.$refs.ball.getBoundingClientRect();
+      const badgePosition=document.getElementById('badge').getBoundingClientRect();
+      const xDist=badgePosition.left-ballPosition.left;
+      const yDist=badgePosition.top-ballPosition.top;
+      el.style.transform = `translate(${xDist}px, ${yDist}px)`;
       el.style.transition="all 1s cubic-bezier(.4,-0.3,1,.68)"
       done()
      
@@ -119,6 +124,12 @@ export default {
     afterEnter(el){
       this.ballFlag=!this.ballFlag;
 
+    },
+    getSelectedCount(count){
+     
+          this.getSelectednum=count;
+           //alert("父组件拿到的数量值为： " + this.getSelectednum);
+        
     }
   },
   components: {
