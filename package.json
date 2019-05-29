@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
    
-    "dev": "webpack-dev-server --open --port 4000 --hot  --host  10.73.178.147"
+    "dev": "webpack-dev-server --open --port 4000 --hot  --host  127.0.0.1"
   },
   "keywords": [],
   "author": "",

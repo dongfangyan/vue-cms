@@ -8,10 +8,10 @@
 
 </template>
 <script>
-import mui from "../../../lib/mui-master/js/mui.min.js";
+import mui from "../../../lib/mui-master/dist/js/mui.js";
 export default {
     mounted(){
-       mui(".mui-numbox").numbox();
+      // mui(".mui-numbox").numbox();
     },
   methods: {
     countChanged() {
@@ -26,9 +26,7 @@ export default {
     max: function(newVal, oldVal) {
       console.log(newVal)
        //使用 JS API 设置 numbox 的最大值
-       mui(".mui-numbox")
-         .numbox()
-         .setOption("max", newVal);
+       mui(".mui-numbox").numbox().setOption("max", newVal);
     
      }
   }
