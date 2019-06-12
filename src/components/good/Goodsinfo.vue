@@ -53,8 +53,8 @@ import numbox from  "../subcomponents/goodsinfo_numbox.vue"
 export default {
   data() {
     return {
-      id: this.$route.params.id, // 将路由参数对象中的 id 挂载到 data , 方便后期调用
-     lunbotuList: [],
+    id: this.$route.params.id, // 将路由参数对象中的 id 挂载到 data , 方便后期调用
+    lunbotuList: [],
     getinfodata: {},
     ballFlag:false,
     getSelectednum:1
@@ -106,6 +106,8 @@ export default {
     },
     addToShopCar(){
       this.ballFlag=!this.ballFlag;
+      var goodsinfo={id:this.id,count:this.getSelectednum,price:this.getinfodata.sell_price,selected:true}
+      this.$store.commit('addToCar',goodsinfo)
     },
     beforeEnter(el){
       el.style.transform="translate(0,0)";

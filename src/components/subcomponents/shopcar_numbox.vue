@@ -11,13 +11,11 @@
 import mui from "../../../lib/mui-master/dist/js/mui.js";
 export default {
     mounted(){
-   mui(".mui-numbox").numbox();
+       mui(".mui-numbox").numbox();
     },
   methods: {
     countChanged() {
-      // 每当 文本框的数据被修改的时候，立即把 最新的数据，通过事件调用，传递给父组件
-      // console.log(this.$refs.numbox.value);
-      this.$emit("getcount", parseInt(this.$refs.numbox.value));
+   
     }   
   },
  props: ["max"],
