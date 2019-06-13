@@ -46,6 +46,7 @@ import mui from "../../../lib/mui-master/dist/js/mui.js";
        if(result.body.code===0){
          console.log(result.body);
           this.goodslist=this.goodslist.concat(result.body.data);
+          console.log(this.goodslist)
        }
      })
    }

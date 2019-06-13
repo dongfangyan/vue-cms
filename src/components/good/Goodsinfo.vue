@@ -106,7 +106,7 @@ export default {
     },
     addToShopCar(){
       this.ballFlag=!this.ballFlag;
-      var goodsinfo={id:this.id,count:this.getSelectednum,price:this.getinfodata.sell_price,selected:true}
+      var goodsinfo={id:this.id,count:this.getSelectednum,price:this.getinfodata.sell_price,titl:this.getinfodata.title,selected:true}
       this.$store.commit('addToCar',goodsinfo)
     },
     beforeEnter(el){
